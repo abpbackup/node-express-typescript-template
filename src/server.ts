@@ -2,6 +2,7 @@ import cors from 'cors';
 import express, { Application, json, urlencoded } from 'express';
 import { router } from './router';
 import dotenv from 'dotenv';
+import { errorHandler } from './error-handler';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ App.use(json());
 App.use(urlencoded());
 
 App.use(router);
+App.use(errorHandler);
 
 App.listen(port, () => {
   console.log('Server started in port: ', port);
